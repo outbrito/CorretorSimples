@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link href="/site_media/css/financeiro/base.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<p><a href="">Cadastro de Contas</a></p>
+<p><a href="">Relatórios</a></p>
+{% endblock %}

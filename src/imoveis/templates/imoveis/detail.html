@@ -1,0 +1,76 @@
+{% extends "imoveis/home.html" %}
+
+
+{% block content%}
+	<form action="" method="POST">
+		{% csrf_token %}
+		<div class="page-header">
+		  <h4>Detalhes</h4>
+		</div>
+		
+		<div class="row">
+			<div class="span4">
+				<h6><i>Dados do Imóvel</i></h6>
+				<hr>
+			</div>
+		</div>	
+		{% for field in form %}
+		<div class="row">
+		    <div class="span4">
+		        <label>{{ field.label }}</label>
+			    {{ field }}
+		    </div>
+		    {% if field.errors %}
+	    	<div class="span4 alert alert-error">{{ field.errors }}</div>
+	    	{% endif %}
+	    </div>
+		{% endfor %}
+		
+		<div class="row">
+			<div class="span4">
+				<h6><i>Atributos do Imóvel</i></h6>
+				<hr>
+			</div>
+		</div>
+		
+		{{ formset.management_form }}
+		{% for form in formset %}
+		<div class="row">
+			{% for field in form.hidden_fields %}
+			{{ field }}
+			{% endfor %}
+			
+		    {% for field in form.visible_fields %}
+		    <div class="span4">
+		        <label>{{ field.label }}</label>
+		        {{ field }}
+		    </div>
+		    
+		    {% if field.errors %}
+	    	<div class="span4 alert alert-error">
+	    		{{ field.errors }}
+	    	</div>
+	    	{% endif %}
+	    	
+	    	{% endfor %}
+
+			{% if form.pk %}
+	    	<div class="span2">
+	        	<label>Delete?</label>
+	        	{{field.DELETE}}
+	    	</div>
+	    	{% endif %}
+	    	
+	    </div>
+		{% endfor %}
+		
+		<div class="form-actions">
+		  <a type="button" class="btn" href="{% url 'imoveis.views.list' %}">Cancelar</a>
+		  <button type="submit" onclick="confirm('Deseja consolidar as alterações no imóvel?')" class="btn btn-primary">Salvar Alterações</button>
+		</div>
+		<!-- <p><input type="submit" value="Salvar Alterações" /><input type="button" value="Anexos" onclick="location.replace('../docs/{{ object_id }}')"/></p> -->
+	</form>
+{% endblock %}
+
+
+

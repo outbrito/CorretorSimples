@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>{{module}}</title>
+<link href="/site_media/css/base.css" rel="stylesheet" type="text/css" />
+{% block css %}
+{% endblock %}
+</head>
+
+<body>
+
+	<div id="title"><a href="/CORRETOR"> CORRETOR </a> <i>{{module}}</i>
+		<div id="topmenu">
+			<a href="/CORRETOR/clientes"> Clientes </a>|<a href="/CORRETOR/imoveis"> Imoveis </a>|<a href="/CORRETOR/financeiro"> Financeiro </a>
+		</div>
+	</div>
+	
+	<div id="container">
+		
+		<div id="header">
+			{% block header %}
+			{% endblock %}
+		</div> 
+		
+		<div id="menu">
+			<p class="mnbt"><a href="/CORRETOR/clientes"> Modulo de clientes </a></p>
+			<hr size="2px" width="80%" align="center">
+			<p class="mnbt"><a href="/CORRETOR/imoveis"> Modulo de imoveis </a></p>
+			<hr size="2px" width="80%" align="center">
+			<p class="mnbt"><a href="/CORRETOR/financeiro"> Modulo financeiro </a></p>
+		</div>
+		
+		<div id="content">
+			{% block content %}
+			{% endblock %}
+		</div>
+		
+		<div id="footer">
+			{% block footer %}
+			{% endblock %}
+		</div>
+		
+	</div>
+
+</body>
+</html>

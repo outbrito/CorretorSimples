@@ -1,0 +1,39 @@
+﻿{% extends "home.html" %}
+
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" type="text/css" media="all" href="/site_media/CSS/datatables.css">
+{% endblock %}
+
+{% block js %}
+{{block.super}}
+<script type="text/javascript" language="javascript" src="/site_media/JS/jquery.dataTables.js"></script>
+<script type="text/javascript" language="javascript" src="/site_media/JS/insert_datatable.js"></script>
+{% endblock %}
+
+{% block content%}
+	<div style="clear:both;">
+	<table id="datatable" class="lista_ht">
+		<thead>
+			<th>Perfil</th>
+			<th scope="col">Bairro</th>
+			<th scope="col">Cidade</th>
+			<th scope="col">Negociação</th>
+			<th scope="col">Valor</th>
+		</thead>
+		<tbody>
+		{% for obj in match_list %}
+		<tr>
+			<td> <a href="{{obj.get_absolute_url}}">{{obj}}</a> </td>
+			<td> {{obj.bairro}} </td>
+			<td> {{obj.cidade}} </td>
+			<td> {{obj.get_negocio_display}} </td>
+			<td> {{obj.valor}} </td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	</div>
+	
+	
+{% endblock %}

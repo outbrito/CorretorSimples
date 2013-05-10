@@ -1,0 +1,14 @@
+{% extends "imoveis/home.html" %}
+
+{% block content%}
+	<h3> Tem certeza que deseja apagar o imóvel abaixo: </h3>
+	<ul><li>{{ imovel }}</li></ul>
+	<br />
+	<font><i>(Todos os documentos e fotos do imóvel serão perdidos, se deseja salvá-los, clique em "não" e vá à página de documentos, salve-os para então apagar o imóvel.) </i></font>
+	<br />
+	<br />
+	<input type="button" value="Sim" onclick="location.replace('./s')" /> <input type="button" value="Não" onclick="history.back()" />
+{% endblock %}
+
+
+

@@ -1,0 +1,10 @@
+{% extends "clientes/home.html" %}
+
+{% block content%}
+	<h3> Tem certeza que deseja apagar o cliente: </h3>
+	<ul><li>{{ cliente }}</li></ul>
+	<input type="button" value="Sim" onclick="location.replace('./s');" /> <input type="button" value="Não" onclick="history.back(1);" />
+{% endblock %}
+
+
+

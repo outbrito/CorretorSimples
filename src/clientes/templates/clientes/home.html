@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+	<h4>Clientes</h4>
+	<hr>
+	
+	<table class="table">
+		<tbody>	
+			{% for class in cs_list %}
+			<tr>
+				<td> <a href="{% url 'clientes.views.list' class.opts.object_name %}">{{class.opts.verbose_name_plural.capitalize}}</a></td>
+				
+				<td><a href="{% url 'clientes.views.add' class.opts.object_name %}">Adicionar</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

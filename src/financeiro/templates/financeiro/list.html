@@ -1,0 +1,37 @@
+{% extends "financeiro/home.html" %}
+{% load static %}
+
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" type="text/css" media="all" href="{% static 'CSS/datatables.css' %}">
+{% endblock %}
+
+{% block js %}
+{{block.super}}
+<script type="text/javascript" language="javascript" src="{% static 'JS/jquery.dataTables.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'JS/insert_datatable.js' %}"></script>
+{% endblock %}
+
+{% block content%}
+<table id="datatable" class="table">
+	<thead>
+		<tr>
+			<th>Referência</th>
+			<th>Valor</th>
+			<th>Vencimento</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		{% for mov in mov_list %}
+		<tr>	
+			<td><a href="{{ mov.id }}">{{ mov }}</a></td>
+			<td>{{ mov.valor }}</td>
+			<td>{{ mov.vencimento }}</td>
+			<td><input type="button" id="del" value="Excluir" onclick="location.replace('./delete/{{ mov.id }}/')" /></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+<button class="btn" onclick="location.replace('./add')">+ Adicionar Movimento</button>
+{% endblock %}

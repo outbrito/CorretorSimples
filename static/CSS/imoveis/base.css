@@ -1,0 +1,42 @@
+body {
+}
+
+#title {
+}
+
+#topmenu {
+}
+
+#topmenu a{
+}
+
+#container {
+	margin-bottom:40px;
+}
+
+
+#header {
+	background:url(../../img/imoveis/bar.png);
+}
+
+#menu {
+}
+
+#menu .mnbt{
+	background:url(../../img/imoveis/mnbt_normal.png);
+}
+
+#menu .mnbt:hover{
+	background:url(../../img/imoveis/mnbt_hover.png);
+}
+
+#menu a{
+}
+
+#content {
+}
+
+#footer {
+	background:url(../../img/imoveis/bar2.png);
+}
+

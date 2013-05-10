@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<input type="button" value="Gerar dados para Notebook" width="300px" height="60px" onclick="location.replace('/CORRETOR/gerdata')">
+<br />
+<!--<input type="button" value="Importar dados" width="300px" height="60px" onclick="location.replace('/CORRETOR/impdata')">
+<br />-->
+<font size="3" color="Red">{{ status }} </font>
+{% endblock %}

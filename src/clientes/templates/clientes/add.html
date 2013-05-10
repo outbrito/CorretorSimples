@@ -1,0 +1,29 @@
+{% extends "clientes/home.html" %}
+
+{% block content%}
+	<form action="" method="POST">
+		{% csrf_token %}
+		<div class="page-header">
+		  <h4>Novo Cliente</h4>
+		</div>
+	
+		{% for field in form %}
+		<div class="row">
+		    <div class="span4">
+		        <div class="input-prepend">
+			      <span class="add-on" style="width:120px;">{{ field.label }}</span>
+			      {{ field }}
+			    </div>
+		    </div>
+		    {% if field.errors %}
+	    	<div class="span4 alert alert-error">{{ field.errors }}</div>
+	    	{% endif %}
+	    </div>
+		{% endfor %}
+			
+		<div class="form-actions">
+		  <a type="button" class="btn" href="{% url 'clientes.views.home' %}">Cancelar</a>
+		  <button type="submit" class="btn btn-primary">Finalizar Cadastro</button>
+		</div>
+	</form>
+{% endblock %}

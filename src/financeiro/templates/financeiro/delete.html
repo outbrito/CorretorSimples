@@ -1,0 +1,10 @@
+{% extends "financeiro/home.html" %}
+
+{% block content%}
+	<h3> Tem certeza que deseja apagar o Movimento: </h3>
+	<ul><li>{{ movimento }}</li></ul>
+	<input type="button" value="Sim" onclick="location.replace('./s');" /> <input type="button" value="Não" onclick="history.back(1);" />
+{% endblock %}
+
+
+

@@ -1,0 +1,239 @@
+{% extends "imoveis/home.html" %}
+
+{% block css %}
+{{ block.super }}
+<link href="/site_media/CSS/galleria.css" rel="stylesheet" type="text/css" media="screen"> 
+
+<style>
+.ui-tabs .ui-tabs-hide {
+     display:none;
+}
+
+.ui-tabs-nav {
+	background:#000000;
+}
+
+.ui-tabs-nav li{
+	display:inline;
+	float:left;
+	margin:2px;
+	background:#FFF;
+}
+
+.demo{
+	background:black;
+	min-height:500px;
+	padding:5px;
+}
+
+.gallery{
+	width:500px;
+	margin:0 auto 0 auto;
+}
+
+.gallery li{
+	width:68px;
+	height:50px;
+	border:3px double #111;
+	margin: 0 2px;
+	background:#000;	
+}
+
+.gallery li div{left:0px;}
+
+.gallery li div .caption{font:italic 0.7em/1.4 georgia,serif;}
+
+#main_image{
+	margin:0 auto 10px auto;
+	text-align:center;
+	vertical-align:middle;
+	background:black;
+}
+
+#main_image img{
+	margin:5px;
+	max-width:640px;
+	max-height:480px;
+}
+
+#fileUploadWrapper {
+	clear:both;
+	text-align:left;
+	background-color:#888888;
+	padding:10px;
+}
+
+#documentWrapper{
+	margin:10px 0 10px 0;
+	padding:5px 0 5px 0;
+}
+
+#end{
+	clear:both;
+	text-align:center;
+	vertical-align:baseline;
+	height:60px;	
+}
+	
+</style>
+
+{% endblock %}
+
+
+{% block js %}
+{{ block.super }}  
+ 
+<script type="text/javascript" src="/site_media/JS/jquery.galleria.js"></script> 
+<script type="text/javascript" src="/site_media/JS/ui.core.js"></script>
+<script type="text/javascript" src="/site_media/JS/ui.tabs.js"></script>
+
+<script type="text/javascript">
+//Inserir a galeria de fotos
+jQuery(function($) {
+		
+		$('.gallery').addClass('gallery'); // adds new class name to maintain degradability
+		
+		$('ul.gallery').galleria({
+			history   : true, // activates the history object for bookmarking, back-button etc.
+			clickNext : true, // helper for making the image clickable
+			insert    : '#main_image', // the containing selector for our main image
+			onImage   : function(image,caption,thumb) { // let's add some image effects for demonstration purposes
+				
+				// fade in the image & caption
+				if(! ($.browser.mozilla && navigator.appVersion.indexOf("Win")!=-1) ) { // FF/Win fades large images terribly slow
+					image.css('display','none').fadeIn(1000);
+				}
+				caption.css('display','none').fadeIn(1000);
+				
+				// fetch the thumbnail container
+				var _li = thumb.parents('li');
+				
+				// fade out inactive thumbnail
+				_li.siblings().children('img.selected').fadeTo(500,0.3);
+				
+				// fade in active thumbnail
+				thumb.fadeTo('fast',1).addClass('selected');
+				
+				// add a title for the clickable image
+				image.attr('title','Next image >>');
+			},
+			onThumb : function(thumb) { // thumbnail effects goes here
+				
+				// fetch the thumbnail container
+				var _li = thumb.parents('li');
+				
+				// if thumbnail is active, fade all the way.
+				var _fadeTo = _li.is('.active') ? '1' : '0.6';
+				
+				// fade in the thumbnail when finnished loading
+				thumb.css({display:'none',opacity:_fadeTo}).fadeIn(1500);
+				
+				// hover effects
+				thumb.hover(
+					function() { thumb.fadeTo('fast',1); },
+					function() { _li.not('.active').children('img').fadeTo('fast',0.3); } // don't fade out if the parent is active
+				)
+			}
+		});
+	});
+
+</script>
+
+<script type="text/javascript">
+//Inserir multi-file upload
+$(document).ready(function(){	
+	var fileMax = 10;
+	$('#asdf').after('<div id="files_list" style="border:1px solid black;padding:5px;background:#fff;font-size:x-small;"><strong>Files (maximum '+fileMax+'):</strong></div>');
+	$("input.upload").change(function(){
+	doIt(this, fileMax);
+	});
+	
+});	
+	
+function doIt(obj, fm) {
+	if($('input.upload').size() > fm) {alert('Max files is '+fm); obj.value='';return true;}
+	$(obj).hide();
+	$(obj).parent().prepend('<input type="file" class="upload" name="fileX[]" />').find("input").change(function() {doIt(this, fm)});
+	var v = obj.value;
+	if(v != '') {
+		$("div#files_list").append('<div>'+v+'<input type="button" class="remove" value="Delete" /></div>')
+		.find("input").click(function(){
+			$(this).parent().remove();
+			$(obj).remove();
+			return true;
+		});
+	}
+
+};
+</script>
+	
+	
+{% endblock %}
+
+
+{% block content %}
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#tabs").tabs();
+  });
+</script>
+
+<div id="tabs">
+	
+	
+	<ul>
+        <li><a href="#fotos"><span>Fotos</span></a></li>
+        <li><a href="#documentos"><span>Documentos</span></a></li>
+    </ul>
+	
+	<div style="clear:both;"/>
+	<div id="fotos">
+		
+		<h3>> Fotos do Imóvel</h3>
+		<div class="demo">
+		
+			<div id="main_image"></div>
+			<ul class="gallery">
+				{% for img in img_list %} 
+				<li>
+					<img src="{{ img }}" title="" alt="Image"/>
+				</li>
+				{% endfor %} 
+			</ul>
+			<div style="clear:both;"></div> 
+		</div>
+	
+	</div>
+	
+	<div id="documentos">
+		<div id="documentWrapper">
+			<h3>> Documentos Anexos</h3>
+			<ul>
+				{% for doc_name, doc_path in docs_dict.items %}
+					<li>
+						<a href="{{ doc_path }}">{{ doc_name }}</a>
+					</li>
+					<br />
+				{% endfor %}
+			</ul>
+		</div>
+		
+	</div>
+	
+</div>
+	
+<div id="fileUploadWrapper">
+	<form action="" method="post" enctype="multipart/form-data" name="asdf" id="asdf">
+	  <div id="mUpload">
+		<input type="file" id="element_input" class="upload" name="fileX[]" /><br />
+	    <input type="submit" name="Submit" value="Enviar" id="send" />
+	  </div>
+	</form>
+</div>
+
+<div id="end">
+	<br /><br />
+	<input type="button" value="   Concluir   " onclick="location.replace('/CORRETOR/imoveis')"/>
+</div>
+{% endblock %}

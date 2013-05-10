@@ -1,0 +1,50 @@
+﻿{% extends "imoveis/home.html" %}
+{% load static %}
+
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" type="text/css" media="all" href="{% static 'CSS/datatables.css' %}"/>
+{% endblock %}
+
+{% block js %}
+{{block.super}}
+<script type="text/javascript" language="javascript" src="{% static 'JS/jquery.dataTables.js' %}"></script>
+<script type="text/javascript"> var colSort = [[1,"desc"]];</script>
+<script type="text/javascript" language="javascript" src="{% static 'JS/insert_datatable.js' %}"></script>
+{% endblock %}
+
+
+{% block content%}
+	<table id="datatable" class="table table-hover">
+		<thead>
+			<tr>
+				<th>Imóvel</th>
+				<th>Endereço</th>
+				<th>Bairro</th>
+				<th>Cidade</th>
+				<th>Negociação</th>
+				<th>Valor</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			{% for imovel in mod_lista %}
+			<tr>
+				
+				<td> <a href="{% url 'imoveis.views.detail' imovel.id %}">{{imovel.m_imovel.classe }}</a> </td>
+				<td> {{imovel.endereco}} </td>
+				<td> {{imovel.bairro}} </td>
+				<td> {{imovel.cidade}} </td>
+				<td> {{imovel.get_negocio_display}} </td>
+				<td> R$ {{imovel.valor|floatformat:2}} </td>
+				<td><input type="button" id="del" value="Excluir" onclick="location.replace('./delete/{{ imovel.id }}/')" /></td>
+				
+			</tr>
+			{% endfor %}
+		</tbody>
+		
+	</table>
+	
+	<input name="novo" type="button" value="+ Adicionar" onclick="location.replace('./add')" />
+	
+{% endblock %}

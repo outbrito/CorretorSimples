@@ -1,0 +1,7 @@
+Modificações.
+
+1°: Casa colocada como vendida continua aparecendo.
+2°: Cliente Proprietarios não ficam em ordem alfabetica.
+3°: Nos pagamentos as datas então ( ano-dia-mês).
+4°: Nos pagamentos só aceita uma data. OK (financeiro/myforms.py, financeiro/views.py)
+5°: Comparação imovel=>cliente

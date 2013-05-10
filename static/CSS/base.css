@@ -1,0 +1,184 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	background:#EEEEEE;
+}
+
+table {
+	border:solid .5px #DDDDDD;
+}
+
+table caption {
+	background:#333333;
+	color:#CCCCCC;
+	text-align:right;
+	font-weight:bold;
+	padding:2px;
+}
+
+input[type=text]{
+	width:350px;
+}
+
+input[type=text].vDateField{
+	width:100px;
+}
+
+textarea{
+	width:350px;
+}
+
+label{
+	font-size:12px;
+}
+
+#formtb th{
+	width:100px;
+	text-align:left;
+	vertical-align:text-top;
+}
+
+#title {
+	padding:5px;
+	font-size:18px;
+	font-weight:lighter;
+	color:#000000;
+}
+
+#title i{
+	font-size:12px;
+	color:#000000;
+}
+
+#title a{
+	text-decoration:none;
+	color:#000000;
+}
+
+#head {
+	float:left;
+}
+
+#topmenu {
+	float:right;
+	vertical-align:baseline;
+	font-size:18px;
+	font-weight:lighter;	
+}
+
+#topmenu a{
+	color:#000000;
+	text-decoration:none;
+	padding:2px;
+	width:60px;
+	background:url(/site_media/img/topmenu_normal.png);
+}
+
+#topmenu a:hover{
+	background:url(/site_media/img/topmenu_hover.png);
+}
+
+#container {
+	clear:both;
+	margin-bottom:40px;
+}
+
+
+#header {
+	clear:both;
+	height: 30px;
+	background:url(/site_media/img/bar.png) repeat-x;
+}
+
+#menu {
+	float:left;
+	font-size:16px;
+	width:150px;
+}
+
+#menu .mnbt{
+	background:url(/site_media/img/mnbt_normal.png);
+	width: 150px;
+	margin:3px;
+	cursor:pointer;
+}
+
+#menu .mnbt:hover{
+	background:url(/site_media/img/mnbt_normal.png);
+}
+
+#menu font{
+	color:#000000;
+	text-decoration:none;
+	padding:5px;
+}
+
+
+#content {
+	min-height:350px;
+	margin-left:155px;
+	padding:5px;
+	margin:5px 5px 5px 155px;
+	background:#EEEEEE;
+    border: solid 1px #CCCCCC;
+}
+
+#footer {
+	clear:both;
+	height: 30px;
+	background:url(/site_media/img/bar2.png) repeat-x;
+}
+
+.error{
+	border: solid 1px #FF3300;
+	background:#FFFFCC;
+}
+
+.errorlist{
+	background:#FF3300;
+	color:#FFFFFF;
+}
+
+.lista_ht{
+	width:100%;
+	border:solid 1px #000;
+	text-align:center;
+	
+}
+
+.lista_ht th { 
+			border-left: solid 1px #CCCCCC;
+			padding-left: 5px;
+			padding-right: 5px;
+			text-align:left;
+			}
+					
+.lista_ht td {
+	text-align:left;
+	border-bottom: solid 1px #CCCCCC;
+}
+
+.lista_ht td a { padding-right:2px; }
+
+
+.lista_hs{
+	width:60%;
+	border:solid 1px #000;
+	text-align:center;
+	
+}
+
+.lista_hs th { 
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align:left;
+	border-bottom: solid 1px #CCCCCC;
+	}
+			
+			
+.lista_hs td { 
+	text-align:right;
+	border-bottom: solid 1px #CCCCCC;
+	}
+	
+.lista_hs td a { padding-right:2px; }

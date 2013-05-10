@@ -1,0 +1,27 @@
+{% extends "imoveis/home.html" %}
+
+{% block content%}
+	<form action="" method="POST">
+		<table id="formtb">
+			<caption>Adicionar</caption>
+			{% for field in form %}
+				
+				{% if field.errors %}
+				<tr>
+					{{ field.errors }}
+				</tr>
+				
+				{% endif%}
+				
+				<tr>
+					<th scope="row">{{ field.label_tag }}:</th> <td>{{ field }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+		<input type="button" value="Cliente Novo" onclick="window.open('/CORRETOR/clientes/add/')" />
+		<p><input type="submit" value="Salvar Alterações" /></p>
+	</form>
+{% endblock %}
+
+
+

@@ -1,0 +1,25 @@
+﻿{% extends "base.html" %}
+{% load static %}
+
+{% block content%}
+	
+	<table class="lista_hs">
+		<caption>Imóveis</caption>	
+			{% for class in cs_list %}
+				<tr>
+					<th scope="row"> 
+						<a href="{{class.opts.object_name}}/">{{class.opts.verbose_name_plural.capitalize}}</a>
+					</th>
+					
+					<td>
+						<a href="{{class.opts.object_name}}/add/">Adicionar</a>
+					</td>
+					
+
+				</tr>
+				
+			{% endfor %}
+		
+	</table>
+
+{% endblock %}

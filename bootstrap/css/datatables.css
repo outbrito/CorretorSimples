@@ -1,0 +1,74 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables features
+ */
+
+.dataTables_wrapper {
+	clear: both;
+	position: relative;
+	display:inline-block;
+}
+
+.dataTables_length {
+	width:30%;
+	float:left;
+}
+
+.dataTables_filter {
+	width: 60%;
+	float: right;
+	text-align: right;
+}
+
+.dataTables_info {
+	width: 60%;
+	float: left;
+}
+
+.dataTables_paginate {
+	width: 50px;
+	float: right;
+	text-align: right;
+}
+
+
+/* Pagination nested */
+.paginate_disabled_previous, .paginate_enabled_previous, .paginate_disabled_next, .paginate_enabled_next {
+	height: 19px;
+	width: 19px;
+	margin-left: 3px;
+	float: left;
+}
+
+.paginate_disabled_previous {
+	background: url('/site_media/IMG/back-disabled.gif') no-repeat center right;
+}
+
+.paginate_enabled_previous {
+	background: url('/site_media/IMG/back-enabled.gif') no-repeat center right;
+}
+
+.paginate_disabled_next {
+	background: url('/site_media/IMG/forward-disabled.gif') no-repeat center right;
+}
+
+.paginate_enabled_next {
+	background: url('/site_media/IMG/forward-enabled.gif') no-repeat center right;
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables sorting
+ */
+
+.sorting_asc {
+	background: url('/site_media/IMG/arrow-up.gif') no-repeat center right;
+}
+
+.sorting_desc {
+	background: url('/site_media/IMG/arrow-down.gif') no-repeat center right;
+}
+
+/*.sorting {
+	background: url('/site_media/IMG/arrow-right.gif') no-repeat center right;
+}*/

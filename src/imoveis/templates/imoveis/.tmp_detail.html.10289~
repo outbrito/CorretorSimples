@@ -1,0 +1,10 @@
+{% extends "imoveis/home.html" %}
+
+{% block content%}
+	<table id="formtb">
+	{{ form.as_table }}
+	</table>
+{% endblock %}
+
+
+

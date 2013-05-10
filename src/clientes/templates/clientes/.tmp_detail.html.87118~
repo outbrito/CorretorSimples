@@ -1,0 +1,18 @@
+{% extends "clientes/home.html" %}
+
+{% block js %}
+	<script language="JavaScript" type="text/javascript">
+	</script>
+{% endblock %}
+
+{% block content%}
+	<table id="formtb">
+	<caption>Cliente</caption>
+	<form>
+	{{ form.as_table }}
+	</form>
+	</table>
+{% endblock %}
+
+
+

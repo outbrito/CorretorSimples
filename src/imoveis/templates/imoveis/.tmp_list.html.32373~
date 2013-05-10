@@ -1,0 +1,36 @@
+{% extends "imoveis/home.html" %}
+
+{% block header %}
+<form action="" method="GET" >
+	<label>Busca:</label><input name="busca" type="text"/>
+	<input value="Buscar..." type="submit" />
+</form>
+{% endblock %}
+
+{% block content%}
+	
+	<table class="lista">
+		<tr>
+			<th scope="col">Imóvel</th>
+			<th scope="col">Bairro</th>
+			<th scope="col">Cidade</th>
+			<th scope="col">Valor</th>
+		</tr>
+		
+		{% for imovel in mod_lista %}
+		<tr>
+			<td> <a href="{{imovel.id}}/">{{imovel}}</a> </td>
+			<td> {{imovel.bairro}} </td>
+			<td> {{imovel.cidade}} </td>
+			<td> {{imovel.valor}} </td>
+			<td><input type="button" id="del" value="Excluir" onclick="location.replace('./delete/{{ imovel.id }}/')" /></td>
+		</tr>
+		{% endfor %}
+		
+	</table>
+
+{% endblock %}
+
+{% block footer %}
+<input name="novo" type="button" value="+ Adicionar" onclick="location.replace('./add')" />
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+		{% block container %}
+		  <form method="POST" action="{% url 'EmpregadoSimples.apps.contas.views.home' %}">
+			{% csrf_token %}			
+			<div class="page-header">
+		      <div class="row">
+			    <div class="span2">
+			      <h4>Dados de Pessoais</h4>
+			    </div>
+			  </div>
+			</div>
+			{% for field in form_usuario %}
+				<div class="row">
+				    <div class="span4">
+				        <div class="input-prepend">
+					      <span class="add-on" style="width:120px;">{{ field.label }}</span>
+					      {{ field }}
+					    </div>
+				    </div>
+				    {% if field.errors %}
+			    	<div class="span4 alert alert-error">{{ field.errors }}</div>
+			    	{% endif %}
+			    </div>
+			{% endfor %}
+			
+			<div class="page-header">
+			  <h4>Perfil</h4>
+			</div>
+			{% for field in form_perfil %}
+				<div class="row">
+				    <div class="span4">
+				        <div class="input-prepend">
+					      <span class="add-on" style="width:120px;">{{ field.label }}</span>
+					      {{ field }}
+					    </div>
+				    </div>
+				    {% if field.errors %}
+			    	<div class="span4 alert alert-error">{{ field.errors }}</div>
+			    	{% endif %}
+			    </div>
+			{% endfor %}
+			
+			<div class="form-actions">
+			  <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+			</div>
+		  </form>
+		{% endblock %}

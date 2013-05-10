@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link href="/site_media/css/imoveis/base.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content%}
+	
+	<table class="lista">
+		<caption>Imóveis</caption>	
+			{% for class in cs_list %}
+				<tr>
+					<th scope="row"> <a href="{{class}}/">{{class}}</a></th>
+					
+					<td><a href="{{class}}/add/">Adicionar</a></td>
+				</tr>
+			{% endfor %}
+		
+	</table>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "clientes/home.html" %}
+
+{% block content%}
+
+<script type="text/javascript">
+	form.items.each(function(f){
+  f.el.dom.readOnly = true;
+});
+</script>
+
+	<table id="formtb">
+	<caption>Cliente</caption>
+	<form>
+	{{ form.as_table }}
+	</form>
+	</table>
+	<!--<input name="away" type="text" value="{{user}}" size="100" readonly="true" />-->
+{% endblock %}
+
+
+

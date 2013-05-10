@@ -1,0 +1,42 @@
+body {
+}
+
+#title {
+}
+
+#topmenu {
+}
+
+#topmenu a{
+}
+
+#container {
+	margin-bottom:40px;
+}
+
+
+#header {
+	background:url(../../img/financeiro/bar.png);
+}
+
+#menu {
+}
+
+#menu .mnbt{
+	background:url(../../img/financeiro/mnbt_normal.png);
+}
+
+#menu .mnbt:hover{
+	background:url(../../img/financeiro/mnbt_hover.png);
+}
+
+#menu a{
+}
+
+#content {
+}
+
+#footer {
+	background:url(../../img/financeiro/bar2.png);
+}
+

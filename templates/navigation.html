@@ -1,0 +1,47 @@
+        <div class="navbar navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <!-- <img style="float: left;" src="img/men_at_work.png" alt="" width="32px" heigth="32px"/> -->
+                    <a class="brand" href="{% url 'home.views.home' %}">CorretorSimples<small style="margin-left:-3px;color:#0088cc;font-size:12px;"><i>beta</i></small></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                           	{% if user.is_authenticated %}
+                            <li class="active"><a href="{% url 'home.views.home' %}">Home</a></li>
+                            {% endif %}
+                            <!-- <li><a href="#about">Sobre</a></li> -->
+                            <li class="active"><a href="#contact" data-remote="{% url 'contato.views.form_contato' %}" data-toggle="modal">Contato</a></li>
+                            <li><a href="{% url 'clientes.views.home' %}">Clientes</a></li>
+                            <li><a href="{% url 'imoveis.views.list' %}">Imóveis</a></li>
+                            <li><a href="{% url 'financeiro.views.home' %}">Financeiro</a></li>
+                        </ul>
+                        {% if not user.is_authenticated %}
+                        <form class="navbar-form pull-right" method="POST" action="{% url 'django.contrib.auth.views.login' %}">
+                        	{% csrf_token %}
+                            <input class="span2" type="text" placeholder="Usuário" name="username"/>
+                            <input class="span2" type="password" placeholder="Senha" name="password"/>
+                            <button type="submit" class="btn">Entrar</button>
+                        </form>
+                        {% else %}
+                        <ul class="nav pull-right">
+                            {% if perms.auth %}
+                        	<li class="active"><a href="{% url 'admin:index' %}">- Admin -</a></li>
+                        	{% endif %}
+                        	<li class="active dropdown">
+                                <a href="#" class="dropdown-toggle active" data-toggle="dropdown">{{ user.first_name }} <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'contas.views.home' %}">Minha Conta</a></li>
+                                    <li class="divider"></li>
+		                        	<li><a href="{% url 'django.contrib.auth.views.logout' %}">Sair</a></li>
+                                </ul>
+                            </li>    
+                        </ul> 
+                        {% endif %}
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>

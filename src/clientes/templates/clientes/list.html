@@ -1,0 +1,38 @@
+{% extends "clientes/home.html" %}
+{% load static %}
+
+{% block css %}
+{{block.super}}
+<link rel="stylesheet" type="text/css" media="all" href="{% static 'CSS/datatables.css' %}" title="win2k-cold-1">
+{% endblock %}
+
+{% block js %}
+{{block.super}}
+<script type="text/javascript" language="javascript" src="{% static 'JS/jquery.dataTables.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'JS/insert_datatable.js' %}"></script>
+{% endblock %}
+
+{% block content%}
+<table id="datatable" class="table">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Telefone</th>
+			<th>Celular</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		{% for cliente in cliente_lista %}
+		<tr>	
+			<td><a href="{{ cliente.get_absolute_url }}">{{ cliente.nome }}</a></td>
+			<td>{{ cliente.tel }}</td>
+			<td>{{ cliente.cell }}</td>
+			<td><input type="button" id="del" value="Excluir" onclick="location.replace('./delete/{{ cliente.id }}/')" /></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+<button class="btn" onclick="location.replace('./add')">+ Adicionar Cliente</button>
+
+{% endblock %}

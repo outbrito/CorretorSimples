@@ -1,0 +1,29 @@
+{% extends "clientes/home.html" %}
+
+{% block js %}
+{% endblock %}
+
+{% block content%}
+	<form action="" method="POST">
+		<table id="formtb">
+			<caption>Cliente</caption>
+			{% for field in form %}
+				
+				{% if field.errors %}
+				<tr>
+					<td>{{ field.errors }}</td>
+				</tr>
+				
+				{% endif%}
+				
+				<tr>
+					<th scope="row">{{ field.label_tag }}:</th> <td>{{ field }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+		<p><input type="submit" value="Salvar Alterações" onclick="confirm('Deseja consolidar as alterações no cliente {{cliente}}?')"/></p>
+	</form>
+{% endblock %}
+
+
+

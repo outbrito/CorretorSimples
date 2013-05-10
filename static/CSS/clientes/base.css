@@ -1,0 +1,39 @@
+body {
+}
+
+#title {
+}
+
+#topmenu {
+}
+
+#topmenu a{
+}
+
+#container {
+	margin-bottom:40px;
+}
+
+
+#header {
+	background:url(../../img/clientes/bar.png);
+}
+
+#menu {
+}
+
+#menu .mnbt{
+	background:url(../../img/clientes/mnbt_normal.png);
+}
+
+#menu .mnbt:hover{
+	background:url(../../img/clientes/mnbt_hover.png);
+}
+
+#content {
+}
+
+#footer {
+	background:url(../../img/clientes/bar2.png);
+}
+

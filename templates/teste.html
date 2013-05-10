@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>&gt; Imóveis &gt; Docs </title>
+<link href="/site_media/css/base.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" media="all" href="/site_media/JS/jscalendar/calendar-blue2.css" title="win2k-cold-1">
+
+
+<link href="/site_media/css/imoveis/base.css" rel="stylesheet" type="text/css" />
+
+<link href="/site_media/CSS/galleria.css" rel="stylesheet" type="text/css" media="screen"> 
+
+<style>
+.ui-tabs .ui-tabs-hide {
+     display: none;
+}	
+#fileUploadWrapper {
+	text-align:left;
+	background-color:#888888;
+	padding:10px;
+}
+
+#documentWrapper{
+	margin:10px 0 10px 0;
+	padding:5px 0 5px 0;
+}
+
+.demo{background:blue;}
+
+.gallery{
+	width:700px;
+	margin:0 auto;
+}
+
+.gallery li{
+	width:68px;
+	height:50px;
+	border:3px double #111;
+	margin: 0 2px;
+	background:#000;
+}
+
+.gallery li div{left:240px}
+
+.gallery li div .caption{font:italic 0.7em/1.4 georgia,serif;}
+
+#main_image{
+	margin:0 auto 10px auto;
+	height:500px;
+	width:700px;
+	text-align:center;
+	vertical-align:middle;
+	background:black;
+}
+
+#main_image img{
+	margin:5px;
+	max-width:640px;
+	max-height:480px;
+}
+	
+</style>
+
+
+
+<script type="text/javascript" src="/site_media/JS/jscalendar/calendar.js"></script>
+<script type="text/javascript" src="/site_media/JS/jscalendar/calendar-bra.js"></script>
+<script type="text/javascript" src="/site_media/JS/jscalendar/calendar-setup.js"></script>
+
+<script type="text/javascript" src="/site_media/JS/jquery.js"></script>
+
+
+  
+ 
+<script type="text/javascript" src="/site_media/JS/jquery.galleria.js"></script> 
+<script type="text/javascript" src="/site_media/JS/ui.core.js"></script>
+
+<script type="text/javascript" src="/site_media/JS/ui.tabs.js"></script>
+
+<script type="text/javascript">
+//Inserir a galeria de fotos
+jQuery(function($) {
+		
+		$('.gallery').addClass('gallery'); // adds new class name to maintain degradability
+		
+		$('ul.gallery').galleria({
+			history   : true, // activates the history object for bookmarking, back-button etc.
+			clickNext : true, // helper for making the image clickable
+			insert    : '#main_image', // the containing selector for our main image
+			onImage   : function(image,caption,thumb) { // let's add some image effects for demonstration purposes
+				
+				// fade in the image & caption
+				if(! ($.browser.mozilla && navigator.appVersion.indexOf("Win")!=-1) ) { // FF/Win fades large images terribly slow
+					image.css('display','none').fadeIn(1000);
+				}
+				caption.css('display','none').fadeIn(1000);
+				
+				// fetch the thumbnail container
+				var _li = thumb.parents('li');
+				
+				// fade out inactive thumbnail
+				_li.siblings().children('img.selected').fadeTo(500,0.3);
+				
+				// fade in active thumbnail
+				thumb.fadeTo('fast',1).addClass('selected');
+				
+				// add a title for the clickable image
+				image.attr('title','Next image >>');
+			},
+			onThumb : function(thumb) { // thumbnail effects goes here
+				
+				// fetch the thumbnail container
+				var _li = thumb.parents('li');
+				
+				// if thumbnail is active, fade all the way.
+				var _fadeTo = _li.is('.active') ? '1' : '0.3';
+				
+				// fade in the thumbnail when finnished loading
+				thumb.css({display:'none',opacity:_fadeTo}).fadeIn(1500);
+				
+				// hover effects
+				thumb.hover(
+					function() { thumb.fadeTo('fast',1); },
+					function() { _li.not('.active').children('img').fadeTo('fast',0.3); } // don't fade out if the parent is active
+				)
+			}
+		});
+	});
+
+</script>
+
+<script type="text/javascript">
+//Inserir as abas
+$(document).ready(function(){	
+	var fileMax = 10;
+	$('#asdf').after('<div id="files_list" style="border:1px solid black;padding:5px;background:#fff;font-size:x-small;"><strong>Files (maximum '+fileMax+'):</strong></div>');
+	$("input.upload").change(function(){
+	doIt(this, fileMax);
+	});
+	
+});	
+	
+function doIt(obj, fm) {
+	if($('input.upload').size() > fm) {alert('Max files is '+fm); obj.value='';return true;}
+	$(obj).hide();
+	$(obj).parent().prepend('<input type="file" class="upload" name="fileX[]" />').find("input").change(function() {doIt(this, fm)});
+	var v = obj.value;
+	if(v != '') {
+		$("div#files_list").append('<div>'+v+'<input type="button" class="remove" value="Delete" /></div>')
+		.find("input").click(function(){
+			$(this).parent().remove();
+			$(obj).remove();
+			return true;
+		});
+	}
+
+};
+</script>
+	
+	
+
+
+</head>
+
+<body>
+
+	<div id="title"><a href="/CORRETOR"> CORRETOR </a> <i>&gt; Imóveis &gt; Docs </i>
+
+		<div id="topmenu">
+			<a href="/CORRETOR/clientes"> Clientes </a>|<a href="/CORRETOR/imoveis"> Imoveis </a>|<a href="/CORRETOR/financeiro"> Financeiro </a>
+		</div>
+	</div>
+	
+	<div id="container">
+
+		
+		<div id="header">
+			
+			
+		</div> 
+		
+		<div id="menu">
+			<div class="mnbt" onclick="location.replace('/CORRETOR/clientes')"><font> Clientes </font></div></a>
+			<hr size="2px" width="80%" align="center">
+			<div class="mnbt" onclick="location.replace('/CORRETOR/imoveis')"><font> Imóveis </font></div>
+			<hr size="2px" width="80%" align="center">
+
+			<div class="mnbt"onclick="location.replace('/CORRETOR/financeiro')"><font> Financeiro </font></div>
+		</div>
+		
+<div id="content">
+			
+			
+			
+
+	<script type="text/javascript">
+	  $(document).ready(function(){
+	    $("#tabs").tabs();
+	  });
+	</script>
+
+	<div id="tabs">
+		
+		
+		<ul>
+	        <li><a href="#fotos"><span>Fotos</span></a></li>
+
+	        <li><a href="#documentos"><span>Documentos</span></a></li>
+	    </ul>
+		
+		<div id="fotos">
+			
+			<h3>> Fotos do Imóvel</h3>
+			<div class="demo">
+				<div id="main_image"> </div>	
+				
+				<ul class="gallery">
+					 
+					<li>
+						<img src="/site_media/extras/1/fotos/0.jpg" title="" alt="Image">
+					</li>
+ 
+					<li>
+						<img src="/site_media/extras/1/fotos/1.jpg" title="" alt="Image">
+					</li>
+					 
+					<li>
+						<img src="/site_media/extras/1/fotos/2.jpg" title="" alt="Image">
+					</li>
+					 
+					<li>
+						<img src="/site_media/extras/1/fotos/3.jpg" title="" alt="Image">
+					</li>
+					 
+					<li>
+						<img src="/site_media/extras/1/fotos/200907073936-13939.jpg" title="" alt="Image">
+					</li>
+					 
+					<li>
+						<img src="/site_media/extras/1/fotos/10.jpg" title="" alt="Image">
+					</li>
+					 
+				</ul>
+			</div>
+		
+		</div>
+		
+		<div id="documentos">
+
+			<div id="documentWrapper">
+				<h3>> Documentos Anexos</h3>
+				<ul>
+					
+						<li>
+							<a href="/site_media/extras/1/docs/mow.gif">mow.gif</a>
+						</li>
+						<br />
+					
+						<li>
+
+							<a href="/site_media/extras/1/docs/Chapter 7_ Forms.pdf">Chapter 7_ Forms.pdf</a>
+						</li>
+						<br />
+					
+						<li>
+							<a href="/site_media/extras/1/docs/musicas a baixar.txt">musicas a baixar.txt</a>
+						</li>
+						<br />
+					
+						<li>
+
+							<a href="/site_media/extras/1/docs/ficha Cadastral de Imoveis.doc">ficha Cadastral de Imoveis.doc</a>
+						</li>
+						<br />
+					
+				</ul>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	<div id="fileUploadWrapper">
+
+		<form action="" method="post" enctype="multipart/form-data" name="asdf" id="asdf">
+		  <div id="mUpload">
+			<input type="file" id="element_input" class="upload" name="fileX[]" /><br />
+		    <input type="submit" name="Submit" value="Submit" id="send" />
+		  </div>
+		</form>
+	</div>
+
+			
+		
+		<script type="text/javascript" src="/site_media/JS/jscalendar/include-calendar.js"></script>
+
+		
+</div>
+		
+		<div id="footer">
+			
+			
+		</div>
+		
+	</div>
+
+</body>
+</html>
